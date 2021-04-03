@@ -1,0 +1,85 @@
+void Escalera_doble_fija_3x3_animada()
+{
+
+    //Inputs del usuario
+    int Posicion_de_la_persona;
+    std::cout << "Imgrese posicion de la persona: ";
+    std::cin >> Posicion_de_la_persona;
+    std::cout << std::endl;
+
+    int Velocidad_de_animacion_en_ms;
+    std::cout << "Ingrese la velocidad para ralentizar la animacion (ms): ";
+    std::cin >> Velocidad_de_animacion_en_ms;
+
+    system("CLS");
+
+    //Calcula cuantas veces se mueve la persona
+    int move = 2*(abs(Posicion_de_la_persona) + (abs(Posicion_de_la_persona)-1)) + 3;
+
+    std::string Escalon_izquierda = "___";
+    std::string Escalon_derecha = "___";
+    std::string Escalon_cero = "___";
+    std::string Separacion_medio;
+
+    //Define si la persona esta en la parte izquierda o derecha para sumar o restar su posicion por 1
+    int Direccion_de_movimiento = ( Posicion_de_la_persona < 0 ) ? 1 : -1;
+
+    //Ejecutado en numeros de veces que la persona se mueve
+    for (int c = 0; c < move; c++)
+    {
+        //Cambio de Direccion_de_movimiento si la persona llega al escalon -m
+        if ( c == move/2)
+        {
+            Direccion_de_movimiento *= -1;
+        }
+        for (int i = -3; i <= 0; i++)
+        {
+            //Si m es negativo la persona esta en la parte izquierda
+            if (Posicion_de_la_persona == i && i != 0)
+            {
+                Escalon_izquierda = "_P_";
+            }
+            //Si m es negativo la persona esta en la parte derecha
+            else if (Posicion_de_la_persona == -i && i != 0)
+            {
+                Escalon_derecha = "_P_";
+            }
+            //Si m es 0 la persona esta en el escalon cero
+            else if (Posicion_de_la_persona == 0)
+            {
+                Escalon_cero = "_P_";
+            }
+            //Calcula la separacion del medio en linea
+            for (int j = 0; j < (-1*i*2)-1; j++)
+            {
+                Separacion_medio += "    ";
+            }
+            //Imprime cada escalon segun el valor de i
+            switch (i)
+            {
+                case -3:
+                std::cout << Escalon_izquierda << Separacion_medio + " " << Escalon_derecha << std::endl;
+                break;
+                case -2:
+                std::cout << "   " << "|" + Escalon_izquierda << Separacion_medio + " " << Escalon_derecha + "|" << std::endl;
+                break;
+                case -1:
+                std::cout << "       " << "|" + Escalon_izquierda << Separacion_medio + " " << Escalon_derecha + "|" << std::endl;
+                break;
+                case 0:
+                std::cout << "           |" + Escalon_cero + "|" << std::endl;
+                break;
+            }
+            //Resetear la variables
+            Separacion_medio = "";
+            Escalon_izquierda = "___";
+            Escalon_derecha = "___";
+            Escalon_cero = "___";
+        }
+        //Sleep y clear
+        Sleep(Velocidad_de_animacion_en_ms);
+        system("CLS");
+        //Cambiar posicion de la persona
+        Posicion_de_la_persona += Direccion_de_movimiento;
+    }
+}
