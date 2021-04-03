@@ -1,0 +1,57 @@
+void Escalera_doble_fija_3x3()
+{
+
+    //Input del usuario
+    int Posicion_de_la_persona;
+    std::cout << "Imgrese posicion de la persona: ";
+    std::cin >> Posicion_de_la_persona;
+
+    std::string Escalon_izquierdo = "___";
+    std::string Escalon_derecho = "___";
+    std::string Escalon_cero = "___";
+    std::string Separacion_medio;
+
+    for (int i = -3; i <= 0; i++)
+    {
+        //Si m es negativo la persona esta en la parte izquierda
+        if (Posicion_de_la_persona == i)
+        {
+            Escalon_izquierdo = "_P_";
+        }
+        //Si m es negativo la persona esta en la parte derecha
+        else if (Posicion_de_la_persona == -i)
+        {
+            Escalon_derecho = "_P_";
+        }
+        //Si m es 0 la persona esta en el escalon 0
+        else if (Posicion_de_la_persona == 0)
+        {
+            Escalon_cero = "_P_";
+        }
+        //Calcula la separacion del medio en linea
+        for (int j = 0; j < (-1*i*2)-1; j++)
+        {
+            Separacion_medio += "    ";
+        }
+        //Imprime cada escalon segun el valor de i
+        switch (i)
+        {
+            case -3:
+            std::cout << Escalon_izquierdo << Separacion_medio + " " << Escalon_derecho << std::endl;
+            break;
+            case -2:
+            std::cout << "   " << "|" + Escalon_izquierdo << Separacion_medio + " " << Escalon_derecho + "|" << std::endl;
+            break;
+            case -1:
+            std::cout << "       " << "|" + Escalon_izquierdo << Separacion_medio + " " << Escalon_derecho + "|" << std::endl;
+            break;
+            case 0:
+            std::cout << "           |" + Escalon_cero + "|" << std::endl;
+            break;
+        }
+        //Resetear las variables
+        Separacion_medio = "";
+        Escalon_izquierdo = "___";
+        Escalon_derecho = "___";
+    }
+}
