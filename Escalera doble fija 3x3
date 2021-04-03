@@ -1,9 +1,11 @@
+// Alumno: Bruno Raúl Fernandez Gutiérrez.
+
 void Escalera_doble_fija_3x3()
 {
 
     //Input del usuario
     int Posicion_de_la_persona;
-    std::cout << "Imgrese posicion de la persona: ";
+    std::cout << "Ingrese posicion de la persona: ";
     std::cin >> Posicion_de_la_persona;
 
     std::string Escalon_izquierdo = "___";
