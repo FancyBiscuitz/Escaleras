@@ -57,3 +57,4 @@ void Escalera_doble_fija_3x3()
         Escalon_derecho = "___";
     }
 }
+ 
